@@ -1,53 +1,62 @@
 #include "byte_stream.hh"
 
-// Dummy implementation of a flow-controlled in-memory byte stream.
+ByteStream::ByteStream(const size_t capacity) : _cap(capacity), _wr_count(0), _rd_count(0) {}
 
-// For Lab 0, please replace with a real implementation that passes the
-// automated checks run by `make check_lab0`.
+/* "Input" interface for the writer */
 
-// You will need to add private members to the class declaration in `byte_stream.hh`
+size_t ByteStream::remaining_capacity() const { return _cap - buffer_size(); }
 
-template <typename... Targs>
-void DUMMY_CODE(Targs &&... /* unused */) {}
-
-using namespace std;
-
-ByteStream::ByteStream(const size_t capacity) { DUMMY_CODE(capacity); }
-
-size_t ByteStream::write(const string &data) {
-    DUMMY_CODE(data);
-    return {};
+void ByteStream::end_input() {
+    this->_ieof = true;
+    return;
 }
 
-//! \param[in] len bytes will be copied from the output side of the buffer
-string ByteStream::peek_output(const size_t len) const {
-    DUMMY_CODE(len);
-    return {};
+size_t ByteStream::write(const std::string &data) {
+    size_t len = data.size(), rem = remaining_capacity();
+    if (len > rem) {
+        len = rem;
+    }
+    for (size_t i = 0; i < len; ++i)
+        _buff.push_back(data[i]);
+    _wr_count += len;
+    return len;
 }
 
-//! \param[in] len bytes will be removed from the output side of the buffer
-void ByteStream::pop_output(const size_t len) { DUMMY_CODE(len); }
+/* "Output" interface for the reader */
 
-//! Read (i.e., copy and then pop) the next "len" bytes of the stream
-//! \param[in] len bytes will be popped and returned
-//! \returns a string
+bool ByteStream::input_ended() const { return this->_ieof; }
+
+size_t ByteStream::buffer_size() const { return this->_buff.size(); }
+
+bool ByteStream::buffer_empty() const { return buffer_size() == 0; }
+
+bool ByteStream::eof() const { return this->_ieof && buffer_empty(); }
+
+std::string ByteStream::peek_output(const size_t len) const {
+    size_t rd_len = len, size = buffer_size();
+    if (rd_len > size) {
+        rd_len = size;
+    }
+    return std::string(_buff.begin(), _buff.begin() + rd_len);
+}
+
+void ByteStream::pop_output(const size_t len) {
+    int size = std::min(len, buffer_size());
+    _rd_count += size;
+    while (size--) {
+        _buff.pop_front();
+    }
+    return;
+}
+
 std::string ByteStream::read(const size_t len) {
-    DUMMY_CODE(len);
-    return {};
+    std::string sread = peek_output(len);
+    pop_output(len);
+    return sread;
 }
 
-void ByteStream::end_input() {}
+/* General accounting */
 
-bool ByteStream::input_ended() const { return {}; }
+size_t ByteStream::bytes_written() const { return this->_wr_count; }
 
-size_t ByteStream::buffer_size() const { return {}; }
-
-bool ByteStream::buffer_empty() const { return {}; }
-
-bool ByteStream::eof() const { return false; }
-
-size_t ByteStream::bytes_written() const { return {}; }
-
-size_t ByteStream::bytes_read() const { return {}; }
-
-size_t ByteStream::remaining_capacity() const { return {}; }
+size_t ByteStream::bytes_read() const { return this->_rd_count; }
