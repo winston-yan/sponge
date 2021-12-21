@@ -54,6 +54,9 @@ class StreamReassembler {
     //! \brief Is the internal state empty (other than the output stream)?
     //! \returns `true` if no substrings are waiting to be assembled
     bool empty() const;
+
+    //! The index of the first unassembled byte
+    size_t get_receive_base() const;
 };
 
 #endif  // SPONGE_LIBSPONGE_STREAM_REASSEMBLER_HH

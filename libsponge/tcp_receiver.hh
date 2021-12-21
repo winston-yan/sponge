@@ -20,12 +20,26 @@ class TCPReceiver {
     //! The maximum number of bytes we'll store.
     size_t _capacity;
 
+    //! The initial sequence number from the "sender"
+    WrappingInt32 _isn;
+
+    //! The most important receive base index
+    size_t _rcv_base_idx;
+
+    //! The acknowledge number calculated when segment received, depending on flags and reassembler's status (unassembled bytes)
+    size_t _ackno;
+
+    //! The flag indicates whether SYN/FIN signal is received
+    bool _syn_received{};
+    bool _fin_received{};
+
   public:
     //! \brief Construct a TCP receiver
     //!
     //! \param capacity the maximum number of bytes that the receiver will
     //!                 store in its buffers at any give time.
-    TCPReceiver(const size_t capacity) : _reassembler(capacity), _capacity(capacity) {}
+    TCPReceiver(const size_t capacity)
+        : _reassembler(capacity), _capacity(capacity), _isn(0ul), _rcv_base_idx(0ul), _ackno(0ul) {}
 
     //! \name Accessors to provide feedback to the remote TCPSender
     //!@{

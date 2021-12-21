@@ -16,6 +16,8 @@ void StreamReassembler::check_eof() {
         _output.end_input();
 }
 
+size_t StreamReassembler::get_receive_base() const { return _unasm_idx; }
+
 //! \details This function accepts a substring (aka a segment) of bytes,
 //! possibly out-of-order, from the logical stream, and assembles any newly
 //! contiguous substrings and writes them into the output stream in order.
