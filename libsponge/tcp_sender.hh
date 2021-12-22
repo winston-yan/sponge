@@ -1,6 +1,5 @@
 #ifndef SPONGE_LIBSPONGE_TCP_SENDER_HH
 #define SPONGE_LIBSPONGE_TCP_SENDER_HH
-
 #include "byte_stream.hh"
 #include "tcp_config.hh"
 #include "tcp_segment.hh"
@@ -8,6 +7,29 @@
 
 #include <functional>
 #include <queue>
+
+
+//! \brief The retransmission timer part of implementation.
+//! Helper class for TCPSender class
+class RetransTimer {
+  private:
+    size_t _retransmission_timeout;
+    size_t _ms_since_restart;
+    bool _timer_running;
+
+  public:
+    RetransTimer(unsigned int init_rto): _retransmission_timeout(init_rto), _ms_since_restart(0), _timer_running(false) {}
+    void double_rto() { _retransmission_timeout <<= 1; }
+    bool is_running() const { return _timer_running; }
+    void stop() { _timer_running = false; }
+    void restart() { _timer_running = true; _ms_since_restart = 0; }
+    void set_rto(size_t rto) { _retransmission_timeout = rto; }
+    bool timeout(size_t interval) { 
+        _ms_since_restart += interval;
+        return _ms_since_restart >= _retransmission_timeout;
+    }
+};
+
 
 //! \brief The "sender" part of a TCP implementation.
 
@@ -22,15 +44,37 @@ class TCPSender {
 
     //! outbound queue of segments that the TCPSender wants sent
     std::queue<TCPSegment> _segments_out{};
+    
+    //! queue of outstanding segments that already sent but not yet acked
+    std::queue<TCPSegment> _outstandings{};
 
     //! retransmission timer for the connection
     unsigned int _initial_retransmission_timeout;
+
+    //! our retransmission timer
+    RetransTimer _timer;
 
     //! outgoing stream of bytes that have not yet been sent
     ByteStream _stream;
 
     //! the (absolute) sequence number for the next byte to be sent
     uint64_t _next_seqno{0};
+
+    //! the most important send base seqno
+    size_t _send_base_seqno{0};
+
+    //! counter for times of consecutive retransmission operations
+    unsigned int _retrans_op_counter{0};
+    
+    //! refer to the corresponding Accessor
+    size_t _bytes_in_flight{0};
+
+    //! window size from last receiver's ack, initially to be zero
+    uint16_t _last_window_size{0};
+
+    //! The flag indicates whether SYN/FIN signal is sent
+    bool _syn_sent{};
+    bool _fin_sent{};
 
   public:
     //! Initialize a TCPSender
