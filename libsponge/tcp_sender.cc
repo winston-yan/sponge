@@ -28,16 +28,13 @@ void TCPSender::fill_window() {
         header.seqno = wrap(_next_seqno, _isn);
 
         /* payload size should be minimum of three variables */
-        size_t payload_size = 
-            std::min(window_size - seg.length_in_sequence_space(), 
+        size_t payload_size =
+            std::min(window_size - seg.length_in_sequence_space(),
             std::min(_stream.buffer_size(), TCPConfig::MAX_PAYLOAD_SIZE));
-       
+
         /* add payload from byte stream */
         seg.payload() = _stream.peek_output(payload_size);
         _stream.pop_output(payload_size);
-
-        /* add segment into outbound queue */
-        _segments_out.push(seg);
 
         /* FIN flag should be judged after payload popped
          * FIN flag cannot be sent with SYN flag
@@ -47,11 +44,11 @@ void TCPSender::fill_window() {
             header.fin = _fin_sent = true;
 
         /* SYN flag to start transfroming byte stream to segments */
-        if (!_syn_sent) 
+        if (!_syn_sent)
             header.syn = _syn_sent = true;
 
-        /* may need to start the timer */
-        if (!_timer.is_running()) _timer.restart();
+        /* add segment into outbound queue */
+        _segments_out.push(seg);
 
         /* add segment with positive seqno into outstanding queue, keep track for possible retransmission */
         _outstandings.push(seg);
@@ -60,6 +57,9 @@ void TCPSender::fill_window() {
         _bytes_in_flight += len_seq_space;
         _next_seqno += len_seq_space;
         window_size -= len_seq_space;
+
+        /* may need to start the timer */
+        if (!_timer.is_running()) _timer.restart();
 
         /* there is nothing to be read from the byte stream */
         if (_stream.eof()) break;
@@ -76,22 +76,22 @@ void TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_si
     if (abs_ackno <= _send_base_seqno) return ;
 
     /* stop the timer: ackno is greater than any other ackno received before */
-    if (_timer.is_running())_timer.stop();
+    if (_timer.is_running()) _timer.stop();
     _timer.set_rto(_initial_retransmission_timeout);
 
     size_t first_unacked_seqno = _send_base_seqno;
 
     /* shrink the outstanding segments window if neccessary */
-    while (true) { 
-        TCPSegment &seg = _outstandings.front();
+    while (!_outstandings.empty()) {
+        const TCPSegment &seg = _outstandings.front();
         size_t abs_seqno = unwrap(seg.header().seqno, _isn, _next_seqno);
-        
-        /* not all the bytes before the ack number from receiver */ 
+
+        /* not all the bytes before the ack number from receiver */
         if (abs_seqno + seg.length_in_sequence_space() > abs_ackno)
             break;
 
-        _outstandings.pop();
         first_unacked_seqno = abs_seqno + seg.length_in_sequence_space();
+        _outstandings.pop();
     }
     _send_base_seqno = first_unacked_seqno;
 
@@ -111,7 +111,7 @@ void TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_si
 void TCPSender::tick(const size_t ms_since_last_tick) {
     if (!_timer.timeout(ms_since_last_tick)) return ;
 
-    if (_timer.is_running())_timer.stop();
+    if (_timer.is_running()) _timer.stop();
 
     /* timeout guaranteed after this line */
     /* 1st: RETRANSMISSION */

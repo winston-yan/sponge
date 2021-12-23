@@ -1,1 +1,262 @@
-build/compile_commands.json
+[
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/byte_stream.cc.o -c /root/projects/cs144/libsponge/byte_stream.cc",
+  "file": "/root/projects/cs144/libsponge/byte_stream.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/stream_reassembler.cc.o -c /root/projects/cs144/libsponge/stream_reassembler.cc",
+  "file": "/root/projects/cs144/libsponge/stream_reassembler.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/tcp_helpers/tcp_header.cc.o -c /root/projects/cs144/libsponge/tcp_helpers/tcp_header.cc",
+  "file": "/root/projects/cs144/libsponge/tcp_helpers/tcp_header.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/tcp_helpers/tcp_segment.cc.o -c /root/projects/cs144/libsponge/tcp_helpers/tcp_segment.cc",
+  "file": "/root/projects/cs144/libsponge/tcp_helpers/tcp_segment.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/tcp_helpers/tcp_state.cc.o -c /root/projects/cs144/libsponge/tcp_helpers/tcp_state.cc",
+  "file": "/root/projects/cs144/libsponge/tcp_helpers/tcp_state.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/tcp_receiver.cc.o -c /root/projects/cs144/libsponge/tcp_receiver.cc",
+  "file": "/root/projects/cs144/libsponge/tcp_receiver.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/tcp_sender.cc.o -c /root/projects/cs144/libsponge/tcp_sender.cc",
+  "file": "/root/projects/cs144/libsponge/tcp_sender.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/address.cc.o -c /root/projects/cs144/libsponge/util/address.cc",
+  "file": "/root/projects/cs144/libsponge/util/address.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/buffer.cc.o -c /root/projects/cs144/libsponge/util/buffer.cc",
+  "file": "/root/projects/cs144/libsponge/util/buffer.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/eventloop.cc.o -c /root/projects/cs144/libsponge/util/eventloop.cc",
+  "file": "/root/projects/cs144/libsponge/util/eventloop.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/file_descriptor.cc.o -c /root/projects/cs144/libsponge/util/file_descriptor.cc",
+  "file": "/root/projects/cs144/libsponge/util/file_descriptor.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/parser.cc.o -c /root/projects/cs144/libsponge/util/parser.cc",
+  "file": "/root/projects/cs144/libsponge/util/parser.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/socket.cc.o -c /root/projects/cs144/libsponge/util/socket.cc",
+  "file": "/root/projects/cs144/libsponge/util/socket.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/tun.cc.o -c /root/projects/cs144/libsponge/util/tun.cc",
+  "file": "/root/projects/cs144/libsponge/util/tun.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/util/util.cc.o -c /root/projects/cs144/libsponge/util/util.cc",
+  "file": "/root/projects/cs144/libsponge/util/util.cc"
+},
+{
+  "directory": "/root/projects/cs144/libsponge",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/sponge.dir/wrapping_integers.cc.o -c /root/projects/cs144/libsponge/wrapping_integers.cc",
+  "file": "/root/projects/cs144/libsponge/wrapping_integers.cc"
+},
+{
+  "directory": "/root/projects/cs144/apps",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/webget.dir/webget.cc.o -c /root/projects/cs144/apps/webget.cc",
+  "file": "/root/projects/cs144/apps/webget.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/spongechecks.dir/byte_stream_test_harness.cc.o -c /root/projects/cs144/tests/byte_stream_test_harness.cc",
+  "file": "/root/projects/cs144/tests/byte_stream_test_harness.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/tcp_parser.dir/tcp_parser.cc.o -c /root/projects/cs144/tests/tcp_parser.cc",
+  "file": "/root/projects/cs144/tests/tcp_parser.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_single.dir/fsm_stream_reassembler_single.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_single.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_single.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_seq.dir/fsm_stream_reassembler_seq.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_seq.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_seq.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_dup.dir/fsm_stream_reassembler_dup.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_dup.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_dup.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_holes.dir/fsm_stream_reassembler_holes.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_holes.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_holes.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_many.dir/fsm_stream_reassembler_many.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_many.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_many.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_overlapping.dir/fsm_stream_reassembler_overlapping.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_overlapping.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_overlapping.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_win.dir/fsm_stream_reassembler_win.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_win.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_win.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/fsm_stream_reassembler_cap.dir/fsm_stream_reassembler_cap.cc.o -c /root/projects/cs144/tests/fsm_stream_reassembler_cap.cc",
+  "file": "/root/projects/cs144/tests/fsm_stream_reassembler_cap.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/byte_stream_construction.dir/byte_stream_construction.cc.o -c /root/projects/cs144/tests/byte_stream_construction.cc",
+  "file": "/root/projects/cs144/tests/byte_stream_construction.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/byte_stream_one_write.dir/byte_stream_one_write.cc.o -c /root/projects/cs144/tests/byte_stream_one_write.cc",
+  "file": "/root/projects/cs144/tests/byte_stream_one_write.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/byte_stream_two_writes.dir/byte_stream_two_writes.cc.o -c /root/projects/cs144/tests/byte_stream_two_writes.cc",
+  "file": "/root/projects/cs144/tests/byte_stream_two_writes.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/byte_stream_capacity.dir/byte_stream_capacity.cc.o -c /root/projects/cs144/tests/byte_stream_capacity.cc",
+  "file": "/root/projects/cs144/tests/byte_stream_capacity.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/byte_stream_many_writes.dir/byte_stream_many_writes.cc.o -c /root/projects/cs144/tests/byte_stream_many_writes.cc",
+  "file": "/root/projects/cs144/tests/byte_stream_many_writes.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/wrapping_integers_cmp.dir/wrapping_integers_cmp.cc.o -c /root/projects/cs144/tests/wrapping_integers_cmp.cc",
+  "file": "/root/projects/cs144/tests/wrapping_integers_cmp.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/wrapping_integers_unwrap.dir/wrapping_integers_unwrap.cc.o -c /root/projects/cs144/tests/wrapping_integers_unwrap.cc",
+  "file": "/root/projects/cs144/tests/wrapping_integers_unwrap.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/wrapping_integers_wrap.dir/wrapping_integers_wrap.cc.o -c /root/projects/cs144/tests/wrapping_integers_wrap.cc",
+  "file": "/root/projects/cs144/tests/wrapping_integers_wrap.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/wrapping_integers_roundtrip.dir/wrapping_integers_roundtrip.cc.o -c /root/projects/cs144/tests/wrapping_integers_roundtrip.cc",
+  "file": "/root/projects/cs144/tests/wrapping_integers_roundtrip.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/recv_connect.dir/recv_connect.cc.o -c /root/projects/cs144/tests/recv_connect.cc",
+  "file": "/root/projects/cs144/tests/recv_connect.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/recv_transmit.dir/recv_transmit.cc.o -c /root/projects/cs144/tests/recv_transmit.cc",
+  "file": "/root/projects/cs144/tests/recv_transmit.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/recv_window.dir/recv_window.cc.o -c /root/projects/cs144/tests/recv_window.cc",
+  "file": "/root/projects/cs144/tests/recv_window.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/recv_reorder.dir/recv_reorder.cc.o -c /root/projects/cs144/tests/recv_reorder.cc",
+  "file": "/root/projects/cs144/tests/recv_reorder.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/recv_close.dir/recv_close.cc.o -c /root/projects/cs144/tests/recv_close.cc",
+  "file": "/root/projects/cs144/tests/recv_close.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/recv_special.dir/recv_special.cc.o -c /root/projects/cs144/tests/recv_special.cc",
+  "file": "/root/projects/cs144/tests/recv_special.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_connect.dir/send_connect.cc.o -c /root/projects/cs144/tests/send_connect.cc",
+  "file": "/root/projects/cs144/tests/send_connect.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_transmit.dir/send_transmit.cc.o -c /root/projects/cs144/tests/send_transmit.cc",
+  "file": "/root/projects/cs144/tests/send_transmit.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_retx.dir/send_retx.cc.o -c /root/projects/cs144/tests/send_retx.cc",
+  "file": "/root/projects/cs144/tests/send_retx.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_ack.dir/send_ack.cc.o -c /root/projects/cs144/tests/send_ack.cc",
+  "file": "/root/projects/cs144/tests/send_ack.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_window.dir/send_window.cc.o -c /root/projects/cs144/tests/send_window.cc",
+  "file": "/root/projects/cs144/tests/send_window.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_close.dir/send_close.cc.o -c /root/projects/cs144/tests/send_close.cc",
+  "file": "/root/projects/cs144/tests/send_close.cc"
+},
+{
+  "directory": "/root/projects/cs144/tests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/send_extra.dir/send_extra.cc.o -c /root/projects/cs144/tests/send_extra.cc",
+  "file": "/root/projects/cs144/tests/send_extra.cc"
+},
+{
+  "directory": "/root/projects/cs144/doctests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/address_dt.dir/address_dt.cc.o -c /root/projects/cs144/doctests/address_dt.cc",
+  "file": "/root/projects/cs144/doctests/address_dt.cc"
+},
+{
+  "directory": "/root/projects/cs144/doctests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/parser_dt.dir/parser_dt.cc.o -c /root/projects/cs144/doctests/parser_dt.cc",
+  "file": "/root/projects/cs144/doctests/parser_dt.cc"
+},
+{
+  "directory": "/root/projects/cs144/doctests",
+  "command": "/usr/bin/c++  -I/root/projects/cs144/libsponge/util -I/root/projects/cs144/libsponge/tcp_helpers -I/root/projects/cs144/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -Og -fsanitize=undefined -fsanitize=address -o CMakeFiles/socket_dt.dir/socket_dt.cc.o -c /root/projects/cs144/doctests/socket_dt.cc",
+  "file": "/root/projects/cs144/doctests/socket_dt.cc"
+}
+]

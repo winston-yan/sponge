@@ -24,7 +24,7 @@ class RetransTimer {
     void stop() { _timer_running = false; }
     void restart() { _timer_running = true; _ms_since_restart = 0; }
     void set_rto(size_t rto) { _retransmission_timeout = rto; }
-    bool timeout(size_t interval) { 
+    bool timeout(size_t interval) {
         _ms_since_restart += interval;
         return _ms_since_restart >= _retransmission_timeout;
     }
@@ -44,7 +44,7 @@ class TCPSender {
 
     //! outbound queue of segments that the TCPSender wants sent
     std::queue<TCPSegment> _segments_out{};
-    
+
     //! queue of outstanding segments that already sent but not yet acked
     std::queue<TCPSegment> _outstandings{};
 
@@ -65,12 +65,12 @@ class TCPSender {
 
     //! counter for times of consecutive retransmission operations
     unsigned int _retrans_op_counter{0};
-    
+
     //! refer to the corresponding Accessor
     size_t _bytes_in_flight{0};
 
-    //! window size from last receiver's ack, initially to be zero
-    uint16_t _last_window_size{0};
+    //! window size from last receiver's ack, initially to be ONE
+    uint16_t _last_window_size{1ul};
 
     //! The flag indicates whether SYN/FIN signal is sent
     bool _syn_sent{};
