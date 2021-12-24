@@ -76,6 +76,9 @@ class TCPSender {
     bool _syn_sent{};
     bool _fin_sent{};
 
+    //! Helper member function to send segment & manipulate timer
+    void send_segment(TCPSegment &seg);
+
   public:
     //! Initialize a TCPSender
     TCPSender(const size_t capacity = TCPConfig::DEFAULT_CAPACITY,
