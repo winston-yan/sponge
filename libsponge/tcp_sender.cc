@@ -1,5 +1,6 @@
-#include "tcp_config.hh"
 #include "tcp_sender.hh"
+
+#include "tcp_config.hh"
 
 #include <random>
 
@@ -40,6 +41,9 @@ void TCPSender::send_segment(TCPSegment &seg) {
 }
 
 void TCPSender::fill_window() {
+    if (!_fill_window_enable)
+        return;
+
     /* first time handshake */
     if (!_syn_sent) {
         TCPSegment seg;
@@ -78,16 +82,29 @@ void TCPSender::fill_window() {
 void TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_size) {
     size_t abs_ackno = unwrap(ackno, _isn, _next_seqno);
     /* invalid ack number */
-    if (abs_ackno > _next_seqno) return ;
+    if (abs_ackno > _next_seqno)
+        return;
 
-    /* when to update window size (many BUGS here)
-     * IF ack number is valid AND
-     * IF window size could provide new segment */
-    if (_next_seqno <= abs_ackno + window_size)
+    /* This part is mainly because of the TEST
+     * because fill_window() function is always called after ack_received
+     * we must consider following circumstances
+     */
+
+    /* 1. When to update window size
+     * 2. When to enable calling fill_window() after this function
+     *      IF there's new ackno space for fill_window()
+     *      OR
+     *      IF the input window size is zero (we should modify it when calling fill_window)
+     */
+    if (_next_seqno < abs_ackno + window_size || window_size == 0) {
         _last_window_size = window_size;
+        _fill_window_enable = true;
+    } else
+        _fill_window_enable = false;
 
     /* this is the old redulicate ack from receiver */
-    if (abs_ackno <= _send_base_seqno) return;
+    if (abs_ackno <= _send_base_seqno)
+        return;
 
     /* stop the timer: ackno is greater than any other ackno received before */
     if (_timer.is_running())
@@ -131,7 +148,13 @@ void TCPSender::tick(const size_t ms_since_last_tick) {
     if (_timer.is_running())
         _timer.stop();
 
-    /* timeout guaranteed after this line */
+    if (_outstandings.empty())
+        return;
+
+    /* the following steps completed when there's outstanding segments left
+     * timeout guaranteed after this line
+     */
+
     /* 1st: RETRANSMISSION */
     _segments_out.push(_outstandings.front());
 
@@ -145,6 +168,7 @@ void TCPSender::tick(const size_t ms_since_last_tick) {
 
     /* 3rd: RESET the timer and RESTART */
     _timer.restart();
+
     return;
 }
 
@@ -155,4 +179,3 @@ void TCPSender::send_empty_segment() {
     seg.header().seqno = wrap(_next_seqno, _isn);
     return;
 }
-

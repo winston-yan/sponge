@@ -8,7 +8,6 @@
 #include <functional>
 #include <queue>
 
-
 //! \brief The retransmission timer part of implementation.
 //! Helper class for TCPSender class
 class RetransTimer {
@@ -18,18 +17,21 @@ class RetransTimer {
     bool _timer_running;
 
   public:
-    RetransTimer(unsigned int init_rto): _retransmission_timeout(init_rto), _ms_since_restart(0), _timer_running(false) {}
+    RetransTimer(unsigned int init_rto)
+        : _retransmission_timeout(init_rto), _ms_since_restart(0), _timer_running(false) {}
     void double_rto() { _retransmission_timeout <<= 1; }
     bool is_running() const { return _timer_running; }
     void stop() { _timer_running = false; }
-    void restart() { _timer_running = true; _ms_since_restart = 0; }
+    void restart() {
+        _timer_running = true;
+        _ms_since_restart = 0;
+    }
     void set_rto(size_t rto) { _retransmission_timeout = rto; }
     bool timeout(size_t interval) {
         _ms_since_restart += interval;
         return _ms_since_restart >= _retransmission_timeout;
     }
 };
-
 
 //! \brief The "sender" part of a TCP implementation.
 
@@ -75,6 +77,9 @@ class TCPSender {
     //! The flag indicates whether SYN/FIN signal is sent
     bool _syn_sent{};
     bool _fin_sent{};
+
+    //! The flag to enable fill_window() function
+    bool _fill_window_enable{true};
 
     //! Helper member function to send segment & manipulate timer
     void send_segment(TCPSegment &seg);
