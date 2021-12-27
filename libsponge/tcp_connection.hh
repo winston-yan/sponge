@@ -21,6 +21,38 @@ class TCPConnection {
     //! in case the remote TCPConnection doesn't know we've received its whole stream?
     bool _linger_after_streams_finish{true};
 
+    //! time passed since last segment received
+    size_t _time_since_last_seg_rcvd{0};
+
+    //! abort flag will be set when abort_connection() is called
+    bool _aborting{};
+
+    //! connection available flag for TCPConnection
+    bool _connection_active{true};
+
+    //! \brief Helper to send segment
+    //! \param send_syn The flag to indicate actively send syn to CONNECT
+    void send_assembled_segment(bool send_syn_or_fin);
+
+    //! \brief Helper to abort connection uncleanly
+    //!
+    //! \param send_rst_segment The flag to indicate whether or not to send segment with RST after abortion
+    void abort_connection(bool send_rst_segment);
+
+    //! \brief Helper to examine if clean disconnection should take place
+    //!
+    //! _linger_after_streams_finish will be set if neccessary
+    void examine_clean_disconnection();
+
+    //! \brief receiver LISTEN state judger
+    bool state_listen() const;
+
+    //! \brief SYN_RCVD state judger
+    bool state_syn_rcvd() const;
+
+    //! \brief SYN_SENT state judger
+    bool state_syn_sent() const;
+
   public:
     //! \name "Input" interface for the writer
     //!@{
