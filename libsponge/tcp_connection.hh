@@ -30,9 +30,8 @@ class TCPConnection {
     //! connection available flag for TCPConnection
     bool _connection_active{true};
 
-    //! \brief Helper to send segment
-    //! \param send_syn The flag to indicate actively send syn to CONNECT
-    void send_assembled_segment(bool send_syn_or_fin);
+    //! \brief Helper to send and assemble sender's segment
+    void send_assembled_segment();
 
     //! \brief Helper to abort connection uncleanly
     //!
@@ -44,7 +43,7 @@ class TCPConnection {
     //! _linger_after_streams_finish will be set if neccessary
     void examine_clean_disconnection();
 
-    //! \brief receiver LISTEN state judger
+    //! \brief LISTEN state judger
     bool state_listen() const;
 
     //! \brief SYN_RCVD state judger

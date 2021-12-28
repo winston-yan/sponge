@@ -1,6 +1,7 @@
 #include "tcp_connection.hh"
 
 #include <iostream>
+#include <limits>
 
 /* private helper functions */
 
@@ -13,19 +14,11 @@ bool TCPConnection::state_syn_rcvd() const {
 }
 
 bool TCPConnection::state_syn_sent() const {
-    return state_listen() && _sender.next_seqno_absolute() &&
-           _sender.next_seqno_absolute() == _sender.bytes_in_flight();
+    const uint64_t seqno = _sender.next_seqno_absolute();
+    return _receiver.ackno().has_value() && seqno && seqno == _sender.bytes_in_flight();
 }
 
-void TCPConnection::send_assembled_segment(bool send_syn_or_fin = false) {
-    /* DEFAULT: not send SYN/FIN
-     * IF actively send SYN (connect()) OR
-     * IF already received SYN from peer
-     * we can fill window
-     */
-    if (send_syn_or_fin || state_syn_rcvd())
-        _sender.fill_window();
-
+void TCPConnection::send_assembled_segment() {
     std::queue<TCPSegment> &outbound_queue = _sender.segments_out();
 
     /* assemble the ackno and receive window into _sender's segments */
@@ -40,8 +33,8 @@ void TCPConnection::send_assembled_segment(bool send_syn_or_fin = false) {
         if (_receiver.ackno().has_value()) {
             header.ackno = _receiver.ackno().value();
             header.ack = true;
-            // TODO: larger than numeric limit of win
-            header.win = _receiver.window_size();
+            /* larger than numeric limit of win */
+            header.win = std::min(_receiver.window_size(), std::numeric_limits<size_t>::max());
         }
 
         /* only send ONE segment with RST if need to send RST */
@@ -75,12 +68,9 @@ void TCPConnection::abort_connection(bool send_rst_segment) {
 }
 
 void TCPConnection::examine_clean_disconnection() {
-    if (!_connection_active) return ;
+    if (!_receiver.stream_out().input_ended()) return ;
 
-    ByteStream &inbound = _receiver.stream_out();
     ByteStream &outbound = _sender.stream_in();
-
-    if (!inbound.input_ended()) return ;
 
     /* IF inbound stream ends before outbound stream reaches EOF, set the flag */
     if (!outbound.eof())
@@ -90,11 +80,9 @@ void TCPConnection::examine_clean_disconnection() {
      * IF outbound stream sending FIN AND
      * IF outbound stream fully acked
      */
-    if (outbound.eof() && _sender.bytes_in_flight() == 0) {
-        if (!_linger_after_streams_finish || _time_since_last_seg_rcvd >= 10 * _cfg.rt_timeout) {
-            _connection_active = false;
-        }
-    }
+    else if (_sender.bytes_in_flight() == 0 &&
+            (!_linger_after_streams_finish || _time_since_last_seg_rcvd >= 10 * _cfg.rt_timeout))
+        _connection_active = false;
     return ;
 }
 
@@ -108,7 +96,8 @@ void TCPConnection::connect() {
      *  2. To trigger SYN flag to be sent actively (with only one seqno)
      * (Step 1 of 3-way handshake)
      */
-    send_assembled_segment(true);
+    _sender.fill_window();
+    send_assembled_segment();
     return ;
 }
 
@@ -116,6 +105,7 @@ size_t TCPConnection::write(const std::string &data) {
     /* write data to the _sender's input stream */
     size_t written_size = _sender.stream_in().write(data);
     /* send it over TCP if possible */
+    _sender.fill_window();
     send_assembled_segment();
     return written_size;
 }
@@ -123,7 +113,8 @@ size_t TCPConnection::write(const std::string &data) {
 void TCPConnection::end_input_stream() {
     _sender.stream_in().end_input();
     /* send FIN segment */
-    send_assembled_segment(true);
+    _sender.fill_window();
+    send_assembled_segment();
     return ;
 }
 
@@ -140,10 +131,14 @@ void TCPConnection::segment_received(const TCPSegment &seg) {
     /* reset the timer */
     _time_since_last_seg_rcvd = 0;
 
+
     const TCPHeader &header = seg.header();
 
     /* in LISTEN state, if SYN flag is not set, ignore the segment */
-    if (state_listen() && !header.syn) return ;
+     if (state_listen() && !header.syn) return ;
+
+    /* in SYN_SENT state, if ACK flag is set with payload, ignore the segment */
+    //if (state_syn_sent() && header.ack && seg.payload().size()) return ;
 
     /* receive RST flag segment, abort connection uncleanly but do not send segment */
     if (header.rst) {
@@ -157,7 +152,7 @@ void TCPConnection::segment_received(const TCPSegment &seg) {
     /* update sender's ackno and window size IF ACK is set */
     if (header.ack) {
         _sender.ack_received(header.ackno, header.win);
-        _sender.fill_window();
+        // _sender.fill_window();
     }
 
     /* IF received segment is Step 1 of 3-way-handshake (judged before giving segment to receiver)

@@ -137,6 +137,7 @@ void TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_si
     /* reset consecutive retransmission counter */
     _retrans_op_counter = 0;
 
+    fill_window();
     return;
 }
 

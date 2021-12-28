@@ -4,6 +4,8 @@
 #include <deque>
 #include <string>
 
+#include "buffer.hh"
+
 //! \brief An in-order byte stream.
 
 //! Bytes are written on the "input" side and read from the "output"
@@ -11,8 +13,8 @@
 //! and then no more bytes can be written.
 class ByteStream {
   private:
-    int _cap, _wr_count, _rd_count;
-    std::deque<char> _buff{};
+    int _capacity, _wr_count, _rd_count;
+    BufferList _buffer{};
     bool _ieof{};
 
     // Hint: This doesn't need to be a sophisticated data structure at
