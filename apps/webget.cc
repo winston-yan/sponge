@@ -15,6 +15,12 @@ void get_URL(const string &host, const string &path) {
     // (not just one call to read() -- everything) until you reach
     // the "eof" (end of file).
 
+    /* NOTE: if 'make check_webget' Timeout
+     * and if 'make check_lab4' all passed
+     * maybe your firewall or router block the Step 1 of 3-way-handshake
+     * please change your access network or fix your firewall or gateway
+     */
+
     CS144TCPSocket conn_sock{};
     conn_sock.connect(Address(host, "http"));
     conn_sock.write("GET " + path + " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n");
