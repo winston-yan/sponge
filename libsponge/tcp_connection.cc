@@ -48,7 +48,7 @@ void TCPConnection::send_assembled_segment() {
     }
 
     examine_clean_disconnection();
-    return ;
+    return;
 }
 
 void TCPConnection::abort_connection(bool send_rst_segment) {
@@ -56,7 +56,8 @@ void TCPConnection::abort_connection(bool send_rst_segment) {
     _receiver.stream_out().set_error();
     _connection_active = false;
 
-    if (!send_rst_segment) return ;
+    if (!send_rst_segment)
+        return;
 
     /* send the empty segment (with RST flag in send_assembled_segment()) */
     _aborting = true;
@@ -64,11 +65,12 @@ void TCPConnection::abort_connection(bool send_rst_segment) {
     if (_sender.segments_out().empty())
         _sender.send_empty_segment();
     send_assembled_segment();
-    return ;
+    return;
 }
 
 void TCPConnection::examine_clean_disconnection() {
-    if (!_receiver.stream_out().input_ended()) return ;
+    if (!_receiver.stream_out().input_ended())
+        return;
 
     ByteStream &outbound = _sender.stream_in();
 
@@ -81,9 +83,9 @@ void TCPConnection::examine_clean_disconnection() {
      * IF outbound stream fully acked
      */
     else if (_sender.bytes_in_flight() == 0 &&
-            (!_linger_after_streams_finish || _time_since_last_seg_rcvd >= 10 * _cfg.rt_timeout))
+             (!_linger_after_streams_finish || _time_since_last_seg_rcvd >= 10 * _cfg.rt_timeout))
         _connection_active = false;
-    return ;
+    return;
 }
 
 /* "Input" interface for the writer/sender-end */
@@ -98,7 +100,7 @@ void TCPConnection::connect() {
      */
     _sender.fill_window();
     send_assembled_segment();
-    return ;
+    return;
 }
 
 size_t TCPConnection::write(const std::string &data) {
@@ -115,7 +117,7 @@ void TCPConnection::end_input_stream() {
     /* send FIN segment */
     _sender.fill_window();
     send_assembled_segment();
-    return ;
+    return;
 }
 
 /* "Output" interface for the reader/receiver-end */
@@ -126,24 +128,25 @@ void TCPConnection::end_input_stream() {
 
 void TCPConnection::segment_received(const TCPSegment &seg) {
     /* make sure current connection is valid */
-    if (!_connection_active) return ;
+    if (!_connection_active)
+        return;
 
     /* reset the timer */
     _time_since_last_seg_rcvd = 0;
 
-
     const TCPHeader &header = seg.header();
 
     /* in LISTEN state, if SYN flag is not set, ignore the segment */
-     if (state_listen() && !header.syn) return ;
+    if (state_listen() && !header.syn)
+        return;
 
     /* in SYN_SENT state, if ACK flag is set with payload, ignore the segment */
-    //if (state_syn_sent() && header.ack && seg.payload().size()) return ;
+    // if (state_syn_sent() && header.ack && seg.payload().size()) return ;
 
     /* receive RST flag segment, abort connection uncleanly but do not send segment */
     if (header.rst) {
         abort_connection(false);
-        return ;
+        return;
     }
 
     /* give the segment to the receiver */
@@ -160,7 +163,7 @@ void TCPConnection::segment_received(const TCPSegment &seg) {
      */
     if (header.syn && _sender.next_seqno_absolute() == 0) {
         connect();
-        return ;
+        return;
     }
 
     size_t cnt = seg.length_in_sequence_space();
@@ -175,14 +178,12 @@ void TCPConnection::segment_received(const TCPSegment &seg) {
         _sender.send_empty_segment();
 
     /* empty segment received, should reply with update ackno and window size */
-    if (_receiver.ackno().has_value() &&
-        cnt == 0 &&
-        header.seqno == _receiver.ackno().value() - 1)
+    if (_receiver.ackno().has_value() && cnt == 0 && header.seqno == _receiver.ackno().value() - 1)
         _sender.send_empty_segment();
 
     /* flush the outbound queue */
     send_assembled_segment();
-    return ;
+    return;
 }
 
 //! \param[in] ms_since_last_tick number of milliseconds since the last call to this method
@@ -201,7 +202,7 @@ void TCPConnection::tick(const size_t ms_since_last_tick) {
      * and examine whether can be cleanly shut down connection
      */
     send_assembled_segment();
-    return ;
+    return;
 }
 
 bool TCPConnection::active() const { return _connection_active; }

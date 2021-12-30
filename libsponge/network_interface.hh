@@ -5,6 +5,7 @@
 #include "tcp_over_ip.hh"
 #include "tun.hh"
 
+#include <map>
 #include <optional>
 #include <queue>
 
@@ -40,7 +41,36 @@ class NetworkInterface {
     //! outbound queue of Ethernet frames that the NetworkInterface wants sent
     std::queue<EthernetFrame> _frames_out{};
 
+    //! queue the IP address in the table for expire
+    struct IPEntry {
+        size_t ttl;
+        uint32_t ip_address;
+    };
+    std::queue<IPEntry> _ip_buffer{};
+
+    //! memory mapping from IP address to Ethernet address
+    std::unordered_map<uint32_t, EthernetAddress> _table{};
+
+    //! queue the IP datagrams that wait for ARP reply and expire
+    struct DGramEntry {
+        size_t ttl;
+        Address next_hop;
+        InternetDatagram dgram;
+    };
+    std::queue<DGramEntry> _dgram_buffer{};
+
+    //! container to prevent duplicate IP in 5000 ms
+    std::unordered_map<uint32_t /* next_hop_ip */, size_t /* ttl for dgram */> _uniq_ip{};
+
+    size_t _timestamp{0};
+
   public:
+    //! \brief Broadcast Ethernet address (static)
+    static constexpr EthernetAddress _broadcast_address = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+
+    //! \brief Unknown Ethernet address (static)
+    static constexpr EthernetAddress _unknown_address = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
     //! \brief Construct a network interface with given Ethernet (network-access-layer) and IP (internet-layer) addresses
     NetworkInterface(const EthernetAddress &ethernet_address, const Address &ip_address);
 
